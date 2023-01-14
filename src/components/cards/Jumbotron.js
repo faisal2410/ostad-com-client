@@ -1,8 +1,9 @@
+
 import React from 'react';
 
 const Jumbotron = ({
   title,
-  subTitle = "Welcome to React E-commerce",
+  subTitle = "Welcome to React E-commerce", 
 }) => {
   return (
     <div
@@ -13,6 +14,7 @@ const Jumbotron = ({
         <div className="col text-center p-5">
           <h1 className="fw-bold">{title}</h1>
           <p className="lead">{subTitle}</p>
+       
         </div>
       </div>
     </div>
