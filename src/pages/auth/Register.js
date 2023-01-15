@@ -9,7 +9,7 @@ const Register=()=> {
   // state
   const [name, setName] = useState("Faisal ahmed");
   const [email, setEmail] = useState("faisal@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [password, setPassword] = useState("MArt@msb2020");
   // hooks
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Register=()=> {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Registration successful");
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (err) {
       console.log(err);

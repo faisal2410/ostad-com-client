@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Login=()=> {
   // state
   const [email, setEmail] = useState("faisal@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [password, setPassword] = useState("MArt@msb2020");
   // hook
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Login=()=> {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successful");
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (err) {
       console.log(err);

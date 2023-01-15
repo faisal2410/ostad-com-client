@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
     if (data) {
       const parsed = JSON.parse(data);
       setAuth({ ...auth, user: parsed.user, token: parsed.token });
+   
     }
   }, []);
 
@@ -26,3 +27,11 @@ const AuthProvider = ({ children }) => {
 const useAuth = () => useContext(AuthContext);
 
 export { useAuth, AuthProvider };
+  
+
+  
+
+  
+  
+
+
