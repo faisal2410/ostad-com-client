@@ -10,6 +10,7 @@
     "antd": "^5.1.5",
     "axios": "^1.2.2",
     "bootstrap": "^5.2.3",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",

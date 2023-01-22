@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminRoute from "./components/routes/AdminRoute";
 import AdminCategory from "./pages/admin/Category";
 import AdminProduct from "./pages/admin/Product";
+import AdminProducts from "./pages/admin/Products";
 import UserOrders from "./pages/user/Orders";
 import UserProfile from "./pages/user/Profile";
 
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/category" element={<AdminCategory />} />
           <Route path="admin/product" element={<AdminProduct />} />
+          <Route path="admin/products" element={<AdminProducts />} />
 
         </Route>
 
