@@ -6,13 +6,16 @@ import ProductCard from "../components/cards/ProductCard";
 const Home=()=> {
   const [products, setProducts] = useState([]);
 
+  
+
   useEffect(() => {
     loadProducts();
   }, []);
 
   const loadProducts = async () => {
     try {
-      const { data } = await axios.get("/products");
+      const {data} = await axios.get("/products");
+    
       setProducts(data);
     } catch (err) {
       console.log(err);

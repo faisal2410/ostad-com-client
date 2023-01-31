@@ -1,13 +1,16 @@
 import moment from "moment";
 import { Badge } from "antd";
 
-const ProductCard=({ p })=> {
+const ProductCard = ({ p }) => {
+  
+  const stock = p?.quantity - p?.sold
+
   return (
     <div className="card mb-3 hoverable">
       <Badge.Ribbon text={`${p?.sold} sold`} color="red">
         <Badge.Ribbon
           text={`${p?.quantity >= 1
-              ? `${p?.quantity - p?.sold} in stock`
+              ? `${stock} in stock`
               : "Out of stock"
             }`}
           placement="start"
@@ -26,9 +29,9 @@ const ProductCard=({ p })=> {
         <h5>{p?.name}</h5>
 
         <h4 className="fw-bold">
-          {p?.price?.toLocaleString("en-US", {
+          {p?.price?.toLocaleString("en-BD", {
             style: "currency",
-            currency: "USD",
+            currency: "BDT",
           })}
         </h4>
 
