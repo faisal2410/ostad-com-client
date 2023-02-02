@@ -12,8 +12,25 @@ const Shop=()=> {
     const [radio, setRadio] = useState([]); // radio
 
     useEffect(() => {
-        loadProducts();
+        if (!checked.length || !radio.length) loadProducts();
     }, []);
+
+    useEffect(() => {
+        if (checked.length || radio.length) loadFilteredProducts();
+    }, [checked, radio]);
+
+    const loadFilteredProducts = async () => {
+        try {
+            const { data } = await axios.post("/filtered-products", {
+                checked,
+                radio,
+            });
+            console.log("filtered products => ", data);
+            setProducts(data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     const loadProducts = async () => {
         try {
@@ -52,7 +69,7 @@ const Shop=()=> {
         <>
             <Jumbotron title="Hello World" subTitle="Welcome to React E-commerce" />
 
-            <pre>{JSON.stringify({ checked, radio }, null, 4)}</pre>
+            {/* <pre>{JSON.stringify({ checked, radio }, null, 4)}</pre> */}
 
             <div className="container-fluid">
                 <div className="row">
@@ -83,6 +100,15 @@ const Shop=()=> {
                                 ))}
                             </Radio.Group>
                         </div>
+
+                        <div className="p-5 pt-0">
+                            <button
+                                className="btn btn-outline-secondary col-12"
+                                onClick={() => window.location.reload()}
+                            >
+                                Reset
+                            </button>
+                        </div>
                     </div>
 
                     <div className="col-md-9">
@@ -90,7 +116,10 @@ const Shop=()=> {
                             {products?.length} Products
                         </h2>
 
-                        <div className="row">
+                        <div
+                            className="row"
+                            style={{ height: "100vh", overflow: "scroll" }}
+                        >
                             {products?.map((p) => (
                                 <div className="col-md-4" key={p._id}>
                                     <ProductCard p={p} />
