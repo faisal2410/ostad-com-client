@@ -1,16 +1,15 @@
-import moment from "moment";
 import { Badge } from "antd";
+import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ p }) => {
-  
-  const stock = p?.quantity - p?.sold
+const ProductCard=({ p })=> {
+  const navigate = useNavigate();
 
   return (
     <div className="card mb-3 hoverable">
       <Badge.Ribbon text={`${p?.sold} sold`} color="red">
         <Badge.Ribbon
           text={`${p?.quantity >= 1
-              ? `${stock} in stock`
+              ? `${p?.quantity - p?.sold} in stock`
               : "Out of stock"
             }`}
           placement="start"
@@ -29,9 +28,9 @@ const ProductCard = ({ p }) => {
         <h5>{p?.name}</h5>
 
         <h4 className="fw-bold">
-          {p?.price?.toLocaleString("en-BD", {
+          {p?.price?.toLocaleString("en-US", {
             style: "currency",
-            currency: "BDT",
+            currency: "USD",
           })}
         </h4>
 
@@ -42,6 +41,7 @@ const ProductCard = ({ p }) => {
         <button
           className="btn btn-primary col card-button"
           style={{ borderBottomLeftRadius: "5px" }}
+          onClick={() => navigate(`/product/${p.slug}`)}
         >
           View Product
         </button>
