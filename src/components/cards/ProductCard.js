@@ -1,7 +1,12 @@
 import { Badge } from "antd";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/cart";
 
-const ProductCard=({ p })=> {
+const  ProductCard=({ p })=> {
+  // context
+  const [cart, setCart] = useCart();
+  // hooks
   const navigate = useNavigate();
 
   return (
@@ -49,6 +54,11 @@ const ProductCard=({ p })=> {
         <button
           className="btn btn-outline-primary col card-button"
           style={{ borderBottomRightRadius: "5px" }}
+          onClick={() => {
+            setCart([...cart, p]);
+            localStorage.setItem("cart", JSON.stringify([...cart, p]));
+            toast.success("Added to cart");
+          }}
         >
           Add to Cart
         </button>
