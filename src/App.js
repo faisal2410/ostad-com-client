@@ -5,9 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Dashboard from "./pages/user/Dashboard";
-import PrivateRoute from "./components/routes/PrivateRoute";
 import AdminDashboard from "./pages/admin/Dashboard";
-import AdminRoute from "./components/routes/AdminRoute";
 import AdminCategory from "./pages/admin/Category";
 import AdminProduct from "./pages/admin/Product";
 import AdminProducts from "./pages/admin/Products";
@@ -17,29 +15,28 @@ import UserProfile from "./pages/user/Profile";
 import Shop from "./pages/Shop";
 import Search from "./pages/Search";
 import ProductView from "./pages/ProductView";
+import PrivateRoute from "./components/routes/PrivateRoute";
+import AdminRoute from "./components/routes/AdminRoute";
 import CategoriesList from "./pages/CategoriesList";
 import CategoryView from "./pages/CategoryView";
 import Cart from "./pages/Cart";
+import AdminOrders from "./pages/admin/Orders";
 
 const PageNotFound = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
-      <h1 className="text-danger">404 | Page not found</h1>
+      404 | Page not found
     </div>
   );
 };
 
-
-const App = () => {
+const App=()=> {
   return (
-  
     <BrowserRouter>
       <Menu />
       <Toaster position="top-right" />
       <Routes>
-        <Route path="/" element={<Home />} >
-
-        </Route>
+        <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/categories" element={<CategoriesList />} />
         <Route path="/category/:slug" element={<CategoryView />} />
@@ -52,7 +49,6 @@ const App = () => {
           <Route path="user" element={<Dashboard />} />
           <Route path="user/profile" element={<UserProfile />} />
           <Route path="user/orders" element={<UserOrders />} />
-          
         </Route>
 
         <Route path="/dashboard" element={<AdminRoute />}>
@@ -64,16 +60,12 @@ const App = () => {
             path="admin/product/update/:slug"
             element={<AdminProductUpdate />}
           />
-
+          <Route path="admin/orders" element={<AdminOrders />} />
         </Route>
-        
-
         <Route path="*" element={<PageNotFound />} replace />
-     
       </Routes>
-    
     </BrowserRouter>
   );
-};
+}
 
 export default App;
